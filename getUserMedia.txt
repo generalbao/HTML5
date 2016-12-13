@@ -1,0 +1,31 @@
+2016年12月13日22:03:03
+
+
+getUserMedia API
+该API允许Web应用程序访问摄像头和麦克风，而无需使用插件。
+
+Javascript代码
+// 设置事件监听器
+window.addEventListener(“DOMContentLoaded”, function() {
+  // 获取元素
+  var canvas = document.getElementById(“canvas”),
+    context = canvas.getContext(“2d”),
+    video = document.getElementById(“video”),
+    videoObj = { ”video”: true },
+    errBack = function(error) {
+      console.log(“Video capture error: ”, error.code);
+    };
+
+  // 设置video监听器
+  if(navigator.getUserMedia) { // Standard
+    navigator.getUserMedia(videoObj, function(stream) {
+      video.src = stream;
+      video.play();
+    }, errBack);
+  } else if(navigator.webkitGetUserMedia) { // WebKit-prefixed
+    navigator.webkitGetUserMedia(videoObj, function(stream){
+      video.src = window.webkitURL.createObjectURL(stream);
+      video.play();
+    }, errBack);
+  }
+}, false);
