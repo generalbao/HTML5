@@ -1,0 +1,6 @@
+2016年12月14日10:51:54
+
+H5调用摄像头,录音,相册.txt
+<input type="file" accept="image/*" capture="camera">
+    <input type="file" accept="video/*" capture="camcorder">
+    <input type="file" accept="audio/*" capture="microphone">
